@@ -1,0 +1,5 @@
+---
+system_hostname: "{{ inventory_hostname.split('.')[0] }}"
+system_locale: en_GB.UTF-8
+system_keymap: uk
+system_timezone: Europe/London

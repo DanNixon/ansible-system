@@ -1,0 +1,20 @@
+---
+namespace: dannixon
+name: system
+
+version: 0.0.1
+
+readme: readme.md
+
+authors:
+  - Dan Nixon <dan@dan-nixon.com>
+
+description: System wide configurations
+
+license: MIT
+
+repository: https://github.com/DanNixon/ansible-system
+issues: https://github.com/DanNixon/ansible-system/issues
+
+build_ignore:
+  - .yamllint

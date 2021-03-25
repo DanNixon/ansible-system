@@ -1,0 +1,31 @@
+---
+- name: Ensure the user exists
+  become: yes
+  user:
+    name: "{{ interactive_user_username }}"
+    state: present
+
+- name: Ensure SSH public key is present
+  become: yes
+  ansible.posix.authorized_key:
+    user: "{{ interactive_user_username }}"
+    key: "{{ interactive_user_ssh_key }}"
+    state: present
+  when: interactive_user_ssh_key | default(no)
+
+- name: Ensure user can sudo if allowed
+  become: yes
+  copy:
+    dest: "/etc/sudoers.d/{{ interactive_user_username }}"
+    content: |
+      {{ interactive_user_username }} ALL=(ALL) ALL
+    mode: "u=r,g=r,o="
+  when: interactive_user_sudoer
+
+- name: Ensure the user's password is set
+  become: yes
+  user:
+    name: "{{ interactive_user_username }}"
+    password: "{{ interactive_user_password }}"
+    state: present
+  when: interactive_user_password | default(no)

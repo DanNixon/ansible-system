@@ -1,13 +1,5 @@
 ---
 - name: Ensure system inspection/monitoring tools are installed
-  become: yes
-  package:
-    name:
-      - acpi
-      - hddtemp
-      - htop
-      - lm_sensors
-      - powertop
-      - smartmontools
-      - upower
-    state: present
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - files: "install_{{ ansible_distribution }}.yml"

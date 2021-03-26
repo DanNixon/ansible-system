@@ -1,0 +1,13 @@
+---
+- name: Ensure system inspection/monitoring tools are installed
+  become: yes
+  package:
+    name:
+      - acpi
+      - hddtemp
+      - htop
+      - lm_sensors
+      - powertop
+      - smartmontools
+      - upower
+    state: present

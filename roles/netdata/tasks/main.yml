@@ -1,23 +1,8 @@
 ---
-- name: Ensure Netdata APT key is added
-  become: yes
-  apt_key:
-    url: https://packagecloud.io/netdata/netdata/gpgkey
-    state: present
-  when: ansible_os_family == Debian
-
-- name: Ensure Netdata APT repository is added
-  become: yes
-  apt_repository:
-    repo: "deb https://packagecloud.io/netdata/netdata/ubuntu/ {{ ansible_distribution_release }} main"
-    state: present
-  when: ansible_os_family == Debian
-
-- name: Update APT repos
-  become: yes
-  apt:
-    update_cache: yes
-  when: ansible_os_family == Debian
+- name: Pre installation steps
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - files: "install_{{ ansible_distribution }}.yml"
 
 - name: Ensure Netdata is installed
   become: yes

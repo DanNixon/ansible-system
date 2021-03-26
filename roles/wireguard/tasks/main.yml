@@ -1,0 +1,23 @@
+---
+- name: Ensure WireGuard tools are installed
+  become: yes
+  package:
+    name: wireguard-tools
+    state: present
+
+- name: Ensure WireGuard configuration is present and up to date
+  become: yes
+  template:
+    src: wg.conf.j2
+    dest: "/etc/wireguard/{{ wireguard_config }}.conf"
+    mode: "u=r,g=,o="
+  notify:
+    - Restart WireGuard service
+
+- name: Ensure the WireGuard service is enabled and started
+  become: yes
+  service:
+    name: "wg-quick@{{ wireguard_config }}"
+    state: started
+    enabled: yes
+  when: wireguard_service

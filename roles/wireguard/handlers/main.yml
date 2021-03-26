@@ -1,0 +1,6 @@
+---
+- name: Restart WireGuard service
+  service:
+    name: "wg-quick@{{ wireguard_config }}"
+    state: restarted
+  when: wireguard_service

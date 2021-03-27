@@ -10,6 +10,7 @@
   template:
     src: "{{ item }}.j2"
     dest: "/etc/dnscrypt-proxy/{{ item }}"
+    mode: "u=rw,g=r,o=r"
   loop:
     - blocked-names.txt
     - forwarding-rules.txt
@@ -30,3 +31,10 @@
     src: resolv.conf
     dest: /etc/resolv.conf
     attributes: +i
+
+- name: Ensure helper scripts are present
+  become: yes
+  copy:
+    src: dnscrypt-proxy-blocked-count
+    dest: /usr/sbin/
+    mode: "u=rx,g=rx,o=rx"

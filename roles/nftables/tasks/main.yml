@@ -35,6 +35,13 @@
   notify:
     - Restart nftables
 
+- name: Check nftables configuration
+  become: yes
+  command: nft -c -f /etc/nftables.conf
+  changed_when: no
+  tags:
+    - firewall_rules
+
 - name: Ensure nftables service is enabled and running
   become: yes
   service:

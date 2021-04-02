@@ -7,14 +7,14 @@
     - files: "install_{{ ansible_distribution }}.yml"
 
 - name: Ensure configuration directory exists
-  become: yes
+  become: true
   file:
     path: /etc/nftables.conf.d
     state: directory
     mode: "u=rwx,g=rx,o=rx"
 
 - name: Ensure configuration fragments exist
-  become: yes
+  become: true
   copy:
     src: nftables.conf.d/
     dest: /etc/nftables.conf.d
@@ -25,7 +25,7 @@
     - Restart nftables
 
 - name: Ensure nftables configuration is present
-  become: yes
+  become: true
   copy:
     src: "{{ nftables_config_file }}"
     dest: /etc/nftables.conf
@@ -36,15 +36,15 @@
     - Restart nftables
 
 - name: Check nftables configuration
-  become: yes
+  become: true
   command: nft -c -f /etc/nftables.conf
-  changed_when: no
+  changed_when: false
   tags:
     - firewall_rules
 
 - name: Ensure nftables service is enabled and running
-  become: yes
+  become: true
   service:
     name: nftables
-    enabled: yes
+    enabled: true
     state: started

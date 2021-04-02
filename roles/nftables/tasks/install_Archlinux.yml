@@ -1,6 +1,6 @@
 ---
 - name: Ensure nftables userland tools are installed
-  become: yes
+  become: true
   package:
     name:
       - nftables
@@ -8,10 +8,10 @@
     state: present
 
 - name: Ensure iptables services are disabled and stopped
-  become: yes
+  become: true
   service:
     name: "{{ item }}"
-    enabled: no
+    enabled: false
     state: stopped
   loop:
     - iptables

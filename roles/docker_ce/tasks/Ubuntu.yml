@@ -1,6 +1,6 @@
 ---
 - name: Ensure prerequisites are installed
-  become: yes
+  become: true
   apt:
     name:
       - apt-transport-https
@@ -10,7 +10,7 @@
     state: present
 
 - name: Ensure APT key is present
-  become: yes
+  become: true
   apt_key:
     url: "https://download.docker.com/linux/ubuntu/gpg"
     state: present
@@ -19,10 +19,10 @@
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
     state: present
-  become: yes
+  become: true
 
 - name: Install Docker CE and docker-compose
-  become: yes
+  become: true
   apt:
     name:
       - containerd.io
@@ -30,4 +30,4 @@
       - docker-ce-cli
       - docker-compose
     state: present
-    update_cache: yes
+    update_cache: true

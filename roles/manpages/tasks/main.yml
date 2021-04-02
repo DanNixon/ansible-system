@@ -1,6 +1,6 @@
 ---
 - name: Ensure manpage dependencies are installed
-  become: yes
+  become: true
   package:
     name:
       - man-db

@@ -1,6 +1,6 @@
 ---
 - name: Ensure iptables userland tools are not installed
-  become: yes
+  become: true
   package:
     name:
       - iptables
@@ -8,7 +8,7 @@
     state: absent
 
 - name: Ensure nftables userland tools are installed
-  become: yes
+  become: true
   package:
     name: nftables
     state: present

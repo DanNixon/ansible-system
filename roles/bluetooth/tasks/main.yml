@@ -1,14 +1,14 @@
 ---
 - name: Ensure Bluez is installed
-  become: yes
+  become: true
   package:
     name:
       - bluez
       - bluez-utils
 
 - name: Ensure Bluetooth service is enabled and started
-  become: yes
+  become: true
   service:
     name: bluetooth
     state: started
-    enabled: yes
+    enabled: true

@@ -1,13 +1,13 @@
 ---
 - name: Ensure NetworkManager is installed
-  become: yes
+  become: true
   package:
     name: networkmanager
     state: present
 
 - name: Ensure NetworkManager service is enabled and running
-  become: yes
+  become: true
   service:
     name: NetworkManager
     state: started
-    enabled: yes
+    enabled: true

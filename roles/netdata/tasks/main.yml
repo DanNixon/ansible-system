@@ -5,14 +5,14 @@
     - files: "install_{{ ansible_distribution }}.yml"
 
 - name: Ensure Netdata is installed
-  become: yes
+  become: true
   package:
     name: netdata
     state: present
 
 - name: Ensure the Netdata service is enabled and running
-  become: yes
+  become: true
   service:
     name: netdata
     state: started
-    enabled: yes
+    enabled: true

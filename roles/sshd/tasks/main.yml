@@ -1,6 +1,6 @@
 ---
 - name: Ensure SSH password authentication is disabled
-  become: yes
+  become: true
   lineinfile:
     path: /etc/ssh/sshd_config
     line: PasswordAuthentication no
@@ -9,8 +9,8 @@
     - Restart sshd
 
 - name: Ensure sshd is enabled and running
-  become: yes
+  become: true
   service:
     name: sshd
     state: started
-    enabled: yes
+    enabled: true

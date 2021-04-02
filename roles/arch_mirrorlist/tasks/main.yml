@@ -7,26 +7,26 @@
   ansible.builtin.tempfile:
     state: file
   register: tempfile
-  changed_when: no
+  changed_when: false
 
 - name: Download mirror list
   get_url:
     url: "{{ arch_mirrorlist_url }}"
     dest: "{{ tempfile.path }}"
-  changed_when: no
+  changed_when: false
 
 - name: Enable all servers in downloaded mirror list
   replace:
     path: "{{ tempfile.path }}"
     regexp: "^#Server"
     replace: "Server"
-  changed_when: no
+  changed_when: false
 
 - name: Ensure mirror list is up to date
-  become: yes
+  become: true
   copy:
     src: "{{ tempfile.path }}"
-    remote_src: yes
+    remote_src: true
     dest: /etc/pacman.d/mirrorlist
     mode: "u=rw,g=r,o=r"
 
@@ -34,4 +34,4 @@
   file:
     path: "{{ tempfile.path }}"
     state: absent
-  changed_when: no
+  changed_when: false

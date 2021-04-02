@@ -1,12 +1,12 @@
 ---
 - name: Ensure dnscrypt-proxy is installed
-  become: yes
+  become: true
   package:
     name: dnscrypt-proxy
     state: present
 
 - name: Ensure dnscrypt-proxy configuration is present
-  become: yes
+  become: true
   template:
     src: "{{ item }}.j2"
     dest: "/etc/dnscrypt-proxy/{{ item }}"
@@ -19,21 +19,21 @@
     - Restart dnscrypt-proxy
 
 - name: Ensure the dnscrypt-proxy service is enabled and running
-  become: yes
+  become: true
   service:
     name: dnscrypt-proxy
     state: started
-    enabled: yes
+    enabled: true
 
 - name: Ensure system resolver is configured
-  become: yes
+  become: true
   copy:
     src: resolv.conf
     dest: /etc/resolv.conf
     attributes: +i
 
 - name: Ensure helper scripts are present
-  become: yes
+  become: true
   copy:
     src: dnscrypt-proxy-blocked-count
     dest: /usr/sbin/

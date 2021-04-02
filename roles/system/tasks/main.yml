@@ -4,14 +4,14 @@
     var: system_hostname
 
 - name: Ensure hostname is set
-  become: yes
+  become: true
   copy:
     dest: /etc/hostname
     content: |
       {{ system_hostname }}
 
 - name: Ensure local host entries are present
-  become: yes
+  become: true
   lineinfile:
     path: /etc/hosts
     line: "{{ item }}"
@@ -21,31 +21,31 @@
     - "127.0.1.1 {{ system_hostname }}"
 
 - name: Ensure locale is generated
-  become: yes
+  become: true
   community.general.locale_gen:
     name: "{{ system_locale }}"
 
 - name: Ensure locale is selected
-  become: yes
+  become: true
   copy:
     dest: /etc/locale.conf
     content: |
       LANG={{ system_locale }}
 
 - name: Ensure keyboard layout is selected
-  become: yes
+  become: true
   copy:
     dest: /etc/vconsole.conf
     content: |
       KEYMAP={{ system_keymap }}
 
 - name: Ensure timezone is selected
-  become: yes
+  become: true
   community.general.timezone:
     name: "{{ system_timezone }}"
 
 - name: Ensure common tools are installed
-  become: yes
+  become: true
   package:
     name:
       - sudo
@@ -56,4 +56,4 @@
   include_tasks: "{{ item }}"
   with_first_found:
     - files: "{{ ansible_os_family }}.yml"
-      skip: yes
+      skip: true

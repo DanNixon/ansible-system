@@ -2,7 +2,7 @@
 namespace: dannixon
 name: system
 
-version: 0.0.24
+version: 0.0.25
 
 readme: readme.md
 
@@ -15,6 +15,3 @@ license: MIT
 
 repository: https://github.com/DanNixon/ansible-system
 issues: https://github.com/DanNixon/ansible-system/issues
-
-build_ignore:
-  - .yamllint

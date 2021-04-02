@@ -2,4 +2,4 @@
 interactive_user_username: user
 interactive_user_password: ""
 interactive_user_ssh_key: ""
-interactive_user_sudoer: yes
+interactive_user_sudoer: true

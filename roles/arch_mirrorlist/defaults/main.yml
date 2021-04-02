@@ -8,4 +8,4 @@ arch_mirrorlist_protocols:
 arch_mirrorlist_ip_versions:
   - 4
 
-arch_mirrorlist_use_status: no
+arch_mirrorlist_use_status: false

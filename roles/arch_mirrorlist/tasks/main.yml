@@ -26,6 +26,7 @@
   become: yes
   copy:
     src: "{{ tempfile.path }}"
+    remote_src: yes
     dest: /etc/pacman.d/mirrorlist
     mode: "u=rw,g=r,o=r"
 

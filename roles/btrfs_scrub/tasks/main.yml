@@ -1,0 +1,13 @@
+---
+- name: Escape path
+  become: true
+  command: "systemd-escape {{ btrfs_scrub_schedule_path }}"
+  changed_when: false
+  register: escaped_path
+
+- name: Ensure scrub is scheduled
+  become: true
+  ansible.builtin.systemd:
+    name: "btrfs-scrub@{{ escaped_path.stdout }}.timer"
+    enabled: yes
+    state: started

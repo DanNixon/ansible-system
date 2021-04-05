@@ -1,0 +1,46 @@
+---
+- name: Ensure Snapperoo script is present
+  become: true
+  get_url:
+    url: https://raw.githubusercontent.com/DanNixon/snapperoo/main/snapperoo
+    dest: /usr/bin/snapperoo
+    checksum: sha256:34d056f966639138b51608ce6d4637af94d3e1810c0556940fbd1c337eb8cb8d
+    mode: u=rwx,g=rx,o=rx
+
+- name: Ensure Snapperoo configuration is present
+  become: yes
+  template:
+    src: snapperoo.json.j2
+    dest: /etc/snapperoo.json
+
+- name: Ensure Systemd units are present
+  become: true
+  get_url:
+    url: "https://raw.githubusercontent.com/DanNixon/snapperoo/main/systemd/{{ item.file }}"
+    dest: "/usr/lib/systemd/system/{{ item.file }}"
+    checksum: "{{ item.checksum }}"
+    mode: u=rw,g=r,o=r
+  loop:
+    - file: snapperoo@.service
+      checksum: sha256:9f91d27f84601c5e453c266909fb5e93ba503196bf2c980cb582c1e57206e567
+    - file: snapperoo@.timer
+      checksum: sha256:d13655fd78bef19dc497602f1d2a74c86f07931fa6e02fb9384e43347f75766d
+  register: install_files
+
+- name: Reload Systemd units
+  become: true
+  systemd:
+    daemon_reload: true
+  when: install_files.changed
+
+- name: Enable Snapperoo timers
+  become: true
+  systemd:
+    name: "snapperoo@{{ item }}.timer"
+    enabled: true
+    state: started
+  loop:
+    - hourly
+    - daily
+    - weekly
+    - monthly

@@ -2,7 +2,7 @@
 - name: Ensure Docker CE is installed
   include_tasks: "{{ item }}"
   with_first_found:
-    - files: "{{ ansible_distribution }}.yml"
+    - files: "install_{{ ansible_distribution }}.yml"
 
 - name: Create the docker group
   become: true

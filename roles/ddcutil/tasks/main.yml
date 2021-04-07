@@ -10,4 +10,4 @@
   copy:
     src: ddcutil.conf
     dest: /etc/modules-load.d/ddcutil.conf
-    mode: u=r,g=r,o=r
+    mode: "u=r,g=r,o=r"

@@ -9,5 +9,5 @@
   become: true
   ansible.builtin.systemd:
     name: "btrfs-scrub@{{ escaped_path.stdout }}.timer"
-    enabled: yes
+    enabled: true
     state: started

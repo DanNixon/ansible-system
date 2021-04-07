@@ -13,11 +13,11 @@
   copy:
     src: pipewire-jack.conf
     dest: /etc/ld.so.conf.d/pipewire-jack.conf
-    mode: u=rw,g=r,o=r
+    mode: "u=rw,g=r,o=r"
 
 - name: Ensure helper scripts are present
   become: true
   copy:
     src: pw-view-graph
     dest: /usr/bin/pw-view-graph
-    mode: u=rx,g=rx,o=rx
+    mode: "u=rx,g=rx,o=rx"

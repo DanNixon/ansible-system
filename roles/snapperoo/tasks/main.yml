@@ -5,10 +5,10 @@
     url: https://raw.githubusercontent.com/DanNixon/snapperoo/main/snapperoo
     dest: /usr/bin/snapperoo
     checksum: sha256:34d056f966639138b51608ce6d4637af94d3e1810c0556940fbd1c337eb8cb8d
-    mode: u=rwx,g=rx,o=rx
+    mode: "u=rwx,g=rx,o=rx"
 
 - name: Ensure Snapperoo configuration is present
-  become: yes
+  become: true
   template:
     src: snapperoo.json.j2
     dest: /etc/snapperoo.json
@@ -19,7 +19,7 @@
     url: "https://raw.githubusercontent.com/DanNixon/snapperoo/main/systemd/{{ item.file }}"
     dest: "/usr/lib/systemd/system/{{ item.file }}"
     checksum: "{{ item.checksum }}"
-    mode: u=rw,g=r,o=r
+    mode: "u=rw,g=r,o=r"
   loop:
     - file: snapperoo@.service
       checksum: sha256:9f91d27f84601c5e453c266909fb5e93ba503196bf2c980cb582c1e57206e567

@@ -1,0 +1,5 @@
+---
+mpd_service_scope: user
+
+mpd_config: {}
+mpd_audio_outputs: []

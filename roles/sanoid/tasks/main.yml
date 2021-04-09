@@ -1,0 +1,20 @@
+---
+- name: Ensure Sanoid is installed
+  become: true
+  package:
+    name: sanoid
+    state: present
+
+- name: Ensure Sanoid configuration is present
+  become: true
+  template:
+    src: sanoid.conf.j2
+    dest: "/etc/sanoid/sanoid.conf"
+    mode: "u=r,g=r,o=r"
+
+- name: Ensure the Sanoid timer is enabled
+  become: true
+  service:
+    name: sanoid.timer
+    state: started
+    enabled: true

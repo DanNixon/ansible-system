@@ -1,0 +1,13 @@
+{% for dataset in sanoid_datasets %}
+[{{ dataset.path }}]
+{% for k, v in dataset.config.items() %}
+{{ k }} = {{ v }}
+{% endfor %}
+{% endfor %}
+
+{% for template in sanoid_templates %}
+[template_{{ template.name }}]
+{% for k, v in template.config.items() %}
+{{ k }} = {{ v }}
+{% endfor %}
+{% endfor %}

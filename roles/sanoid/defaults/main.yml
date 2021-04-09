@@ -1,0 +1,27 @@
+---
+# For demonstration purposes, these defaults encode the example configuration
+# from https://github.com/jimsalterjrs/sanoid/blob/master/README.md
+
+sanoid_datasets:
+  - path: data/home
+    config:
+      use_template: production
+  - path: data/images
+    config:
+      use_template: production
+      recursive: "yes"
+      process_children_only: "yes"
+  - path: data/images/win7
+    config:
+      hourly: 4
+
+sanoid_templates:
+  - name: production
+    config:
+      autosnap: "yes"
+      autoprune: "yes"
+      frequently: 0
+      hourly: 36
+      daily: 30
+      monthly: 3
+      yearly: 0

@@ -7,4 +7,6 @@ galaxy_info:
   platforms:
     - name: ArchLinux
 
-dependencies: []
+dependencies:
+  - role: dannixon.system.aur_builder
+  - role: kewlfft.aur

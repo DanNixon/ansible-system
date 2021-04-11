@@ -15,11 +15,12 @@
 
 - name: Ensure user can sudo if allowed
   become: true
-  copy:
-    dest: "/etc/sudoers.d/{{ interactive_user_username }}"
-    content: |
-      {{ interactive_user_username }} ALL=(ALL) ALL
+  lineinfile:
+    line: "{{ interactive_user_username }} ALL=(ALL) ALL"
+    path: "/etc/sudoers.d/{{ interactive_user_username }}"
     mode: "u=r,g=r,o="
+    create: true
+    validate: "visudo -cf %s"
   when: interactive_user_sudoer
 
 - name: Ensure the user's password is set

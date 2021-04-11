@@ -9,12 +9,14 @@
   become: true
   user:
     name: aur_builder
-    group: wheel
+    create_home: false
+    password: "!"
 
 - name: Ensure the AUR builder user can use sudo without a password
   become: true
   lineinfile:
-    path: /etc/sudoers.d/11-install-aur_builder
     line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+    path: /etc/sudoers.d/aur_builder
+    mode: "u=r,g=r,o="
     create: true
     validate: "visudo -cf %s"

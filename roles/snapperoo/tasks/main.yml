@@ -11,6 +11,7 @@
   template:
     src: snapperoo.json.j2
     dest: /etc/snapperoo.json
+    mode: "u=r,g=r,o=r"
 
 - name: Enable Snapperoo timers
   become: true

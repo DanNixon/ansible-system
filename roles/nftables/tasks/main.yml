@@ -1,10 +1,9 @@
 ---
 - name: Install nftables
-  include_tasks: "{{ task_file }}"
-  loop_control:
-    loop_var: task_file
-  with_first_found:
-    - files: "install_{{ ansible_distribution }}.yml"
+  include_tasks: "{{ lookup('first_found', candidate_files) }}"
+  vars:
+    candidate_files:
+      - "install_{{ ansible_distribution }}.yml"
 
 - name: Ensure configuration directory exists
   become: true
@@ -27,9 +26,13 @@
 - name: Ensure nftables configuration is present
   become: true
   copy:
-    src: "{{ nftables_config_file }}"
+    src: "{{ lookup('first_found', candidate_files) }}"
     dest: /etc/nftables.conf
     mode: "u=rw,g=r,o=r"
+  vars:
+    candidate_files:
+      - "{{ nftables_config_file }}"
+      - default.nft
   tags:
     - firewall_rules
   notify:

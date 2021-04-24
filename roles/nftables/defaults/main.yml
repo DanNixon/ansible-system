@@ -1,2 +1,2 @@
 ---
-nftables_config_file: default.nft
+nftables_config_file: firewall.nft

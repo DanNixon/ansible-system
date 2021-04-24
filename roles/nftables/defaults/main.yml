@@ -1,11 +1,2 @@
 ---
-nftables_tables:
-  - table: inet filter
-    includes:
-      - /etc/nftables.conf.d/chain-input-default.nft
-      - /etc/nftables.conf.d/chain-forward-drop.nft
-      - /etc/nftables.conf.d/chain-output-accept.nft
-      - /etc/nftables.conf.d/chain-input-ssh.nft
-    chains:
-      input-host:
-        - jump input-ssh
+nftables_config_file: default.nft

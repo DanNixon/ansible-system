@@ -26,8 +26,8 @@
 
 - name: Ensure nftables configuration is present
   become: true
-  template:
-    src: nftables.conf.j2
+  copy:
+    src: "{{ nftables_config_file }}"
     dest: /etc/nftables.conf
     mode: "u=rw,g=r,o=r"
   tags:

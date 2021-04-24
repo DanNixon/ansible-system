@@ -2,7 +2,7 @@
 
 {% for table in nftables_tables %}
 table {{ table.table }} {
-{% for filename in table.includes %}
+{% for filename in table.includes | default([]) %}
     include "{{ filename }}"
 {% endfor %}
 

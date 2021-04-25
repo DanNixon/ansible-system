@@ -1,0 +1,9 @@
+[Unit]
+Description=Send regular updates to healthchecks.io
+
+[Timer]
+OnCalendar={{ healthcheck_heartbeat_time_period }}
+Persistent=true
+
+[Install]
+WantedBy=timers.target

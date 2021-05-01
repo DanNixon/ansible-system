@@ -44,6 +44,13 @@
   community.general.timezone:
     name: "{{ system_timezone }}"
 
+- name: Ensure NTP service is enabled
+  become: true
+  service:
+    name: systemd-timesyncd.service
+    enabled: true
+    state: started
+
 - name: Ensure common tools are installed
   become: true
   package:

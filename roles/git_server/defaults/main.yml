@@ -1,0 +1,3 @@
+---
+git_server_path: /srv/git
+git_server_ssh_pubkeys: []

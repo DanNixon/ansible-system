@@ -1,0 +1,6 @@
+---
+- name: Reload rules
+  become: true
+  shell: |
+    augenrules --load
+    killall auditd -s SIGHUP

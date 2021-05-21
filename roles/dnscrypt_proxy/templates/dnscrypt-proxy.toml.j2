@@ -74,7 +74,7 @@ doh_servers = true
 ## Require servers defined by remote sources to satisfy specific properties
 
 # Server must support DNS security extensions (DNSSEC)
-require_dnssec = false
+require_dnssec = {{ dnscrypt_proxy_require_dnssec | to_json }}
 
 # Server must not log user queries (declarative)
 require_nolog = true

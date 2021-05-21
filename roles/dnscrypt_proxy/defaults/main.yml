@@ -5,5 +5,7 @@ dnscrypt_proxy_listen_addresses:
   - "[::1]:53"
   - "127.0.0.1:53"
 
+dnscrypt_proxy_require_dnssec: false
+
 dnscrypt_proxy_blocked_names: []
 dnscrypt_proxy_forwarding_rules: []

@@ -9,8 +9,10 @@
   become: true
   user:
     name: aur_builder
-    create_home: false
     password: "!"
+    create_home: false
+    home: /
+    comment: User to automate building packages from the AUR
 
 - name: Ensure the AUR builder user can use sudo without a password
   become: true

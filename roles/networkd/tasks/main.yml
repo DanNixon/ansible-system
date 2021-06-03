@@ -1,0 +1,25 @@
+---
+- name: Clean existing configuration
+  import_tasks: clean.yml
+  when: networkd_clean
+
+- name: Ensure configuration is present and up to date
+  become: true
+  template:
+    src: conf.j2
+    dest: "/usr/lib/systemd/network/{{ item.filename }}"
+    owner: root
+    group: systemd-network
+    mode: "u=r,g=r,o="
+  loop: "{{ networkd_config | dannixon.system.networkd_config_list }}"
+  loop_control:
+    label: "{{ item.filename }}"
+  notify:
+    - Restart networkd
+
+- name: Ensure service is enabled and running
+  become: true
+  service:
+    name: systemd-networkd.service
+    state: started
+    enabled: true

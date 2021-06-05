@@ -1,3 +1,0 @@
-chain input-jacktrip {
-    udp dport 4464 counter accept
-}

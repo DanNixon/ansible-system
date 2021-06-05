@@ -1,2 +1,59 @@
 ---
-nftables_config_file: firewall.nft
+nftables_tables:
+  - name: filter
+    family: inet
+
+    chains:
+      - "{{ nftables_application_chains.ssh }}"
+
+      - name: input
+        config:
+          type: filter
+          hook: input
+          priority: filter
+          policy: drop
+        rules:
+          - iif lo counter accept
+          - ct state invalid counter drop
+          - 'ct state { established, related } counter accept'
+          - 'ip6 nexthdr icmpv6 icmpv6 type { nd-neighbor-solicit, echo-request, nd-router-advert, nd-neighbor-advert } counter accept'
+          - jump input_ssh
+          - 'log prefix "firewall: dropped " counter drop'
+
+      - name: forward
+        config:
+          type: filter
+          hook: forward
+          priority: filter
+          policy: drop
+
+      - name: output
+        config:
+          type: filter
+          hook: output
+          priority: filter
+          policy: accept
+
+
+nftables_application_chains:
+  jacktrip:
+    name: input_jacktrip
+    rules:
+      - udp dport 4464 counter accept
+
+  packer:
+    name: input_packer
+    rules:
+      - 'tcp dport 8000-9000 log prefix "firewall: Packer HTTP connection: " counter accept'
+
+  ssh:
+    name: input_ssh
+    rules:
+      - 'tcp dport ssh limit rate over 10/minute log prefix "firewall: SSH rate limit dropped: " counter drop'
+      - 'tcp dport ssh ct state new log prefix "firewall: new SSH connection: " counter accept'
+
+  syncthing:
+    name: input_syncthing
+    rules:
+      - tcp dport 22000 counter accept
+      - udp dport 21027 counter accept

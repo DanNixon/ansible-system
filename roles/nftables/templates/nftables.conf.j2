@@ -1,0 +1,20 @@
+{{ ansible_managed | comment }}
+
+{% for table in nftables_tables %}
+table {{ table.family }} {{ table.name }} {
+{% for chain in table.chains %}
+    chain {{ chain.name }} {
+{% if chain.config is defined %}
+        type {{ chain.config.type }} hook {{ chain.config.hook }} priority {{ chain.config.priority }}
+        policy {{ chain.config.policy }}
+{% endif %}
+
+{% for rule in chain.rules | default([]) %}
+        {{ rule }}
+{% endfor %}
+    }
+{% endfor %}
+
+}
+
+{% endfor %}

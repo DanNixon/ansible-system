@@ -1,43 +1,23 @@
 ---
-- name: Install nftables
+- name: Ensure nftables is installed
   include_tasks: "{{ lookup('first_found', candidate_files) }}"
   vars:
     candidate_files:
       - "install_{{ ansible_distribution }}.yml"
 
-- name: Ensure configuration directory exists
+- name: Ensure configuration is present
   become: true
-  file:
-    path: /etc/nftables.conf.d
-    state: directory
-    mode: "u=rwx,g=rx,o=rx"
-
-- name: Ensure configuration fragments exist
-  become: true
-  copy:
-    src: nftables.conf.d/
-    dest: /etc/nftables.conf.d
-    mode: "u=rw,g=r,o=r"
-  tags:
-    - firewall_rules
-  notify:
-    - Restart nftables
-
-- name: Ensure nftables configuration is present
-  become: true
-  copy:
-    src: "{{ lookup('first_found', candidate_files) }}"
+  template:
+    src: nftables.conf.j2
     dest: /etc/nftables.conf
-    mode: "u=rw,g=r,o=r"
-  vars:
-    candidate_files:
-      - "{{ nftables_config_file }}"
-      - default.nft
-  tags:
-    - firewall_rules
+    mode: "u=r,g=r,o=r"
   notify:
     - Restart nftables
+  tags:
+    - firewall_rules
 
+# Using `validate` in the above task does not work as (I believe) -c expects to
+# check for updates to an existing file.
 - name: Check nftables configuration
   become: true
   command: nft -c -f /etc/nftables.conf
@@ -45,7 +25,7 @@
   tags:
     - firewall_rules
 
-- name: Ensure nftables service is enabled and running
+- name: Ensure service is enabled and running
   become: true
   service:
     name: nftables

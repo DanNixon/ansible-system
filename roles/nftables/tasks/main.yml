@@ -1,9 +1,6 @@
 ---
 - name: Ensure nftables is installed
-  include_tasks: "{{ lookup('first_found', candidate_files) }}"
-  vars:
-    candidate_files:
-      - "install_{{ ansible_distribution }}.yml"
+  include_tasks: "{{ lookup('first_found', 'install_%s.yml' % ansible_distribution) }}"
 
 - name: Ensure configuration is present
   become: true

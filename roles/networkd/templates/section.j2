@@ -1,0 +1,10 @@
+[{{ section_name }}]
+{% for k, v in section_config.items() %}
+{% if v is string or v is not iterable %}
+{{ k }}={{ v }}
+{% else %}
+{% for vv in v %}
+{{ k }}={{ vv }}
+{% endfor %}
+{% endif %}
+{% endfor %}

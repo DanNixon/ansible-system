@@ -1,0 +1,14 @@
+{{ ansible_managed | comment }}
+
+{% for section_name, configs in item.config.items() %}
+{% if configs is mapping %}
+{% set section_config = configs %}
+
+{% include "section.j2" %}
+{% else %}
+{% for section_config in configs %}
+
+{% include "section.j2" %}
+{% endfor %}
+{% endif %}
+{% endfor %}

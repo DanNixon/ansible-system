@@ -6,7 +6,7 @@
 - name: Ensure configuration is present and up to date
   become: true
   template:
-    src: conf.j2
+    src: config.j2
     dest: "/usr/lib/systemd/network/{{ item.filename }}"
     owner: root
     group: systemd-network

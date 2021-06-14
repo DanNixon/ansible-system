@@ -12,3 +12,5 @@
     name: bluetooth
     state: started
     enabled: true
+  tags:
+    - molecule-notest

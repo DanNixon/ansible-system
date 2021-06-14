@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+
+  vars:
+    arch_mirrorlist_countries:
+      - GB
+      - DE
+
+  roles:
+    - arch_mirrorlist

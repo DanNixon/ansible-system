@@ -4,3 +4,4 @@
   service:
     name: nftables
     state: restarted
+  when: molecule_yml is not defined

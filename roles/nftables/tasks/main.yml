@@ -21,6 +21,7 @@
   changed_when: false
   tags:
     - firewall_rules
+    - molecule-notest
 
 - name: Ensure service is enabled and running
   become: true
@@ -28,3 +29,5 @@
     name: nftables
     enabled: true
     state: started
+  tags:
+    - molecule-notest

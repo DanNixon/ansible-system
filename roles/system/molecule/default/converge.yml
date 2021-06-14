@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+
+  vars:
+    system_hostname: test
+
+  roles:
+    - system

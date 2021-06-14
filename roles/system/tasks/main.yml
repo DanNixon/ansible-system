@@ -6,9 +6,12 @@
 - name: Ensure hostname is set
   become: true
   copy:
-    dest: /etc/hostname
     content: |
       {{ system_hostname }}
+    dest: /etc/hostname
+    mode: "u=rw,g=r,o=r"
+  tags:
+    - molecule-notest
 
 - name: Ensure local host entries are present
   become: true
@@ -19,30 +22,38 @@
     - "127.0.0.1 localhost"
     - "::1 localhost"
     - "127.0.1.1 {{ system_hostname }}"
+  tags:
+    - molecule-notest
 
 - name: Ensure locale is generated
   become: true
   community.general.locale_gen:
     name: "{{ system_locale }}"
+  tags:
+    - molecule-notest
 
 - name: Ensure locale is selected
   become: true
   copy:
-    dest: /etc/locale.conf
     content: |
       LANG={{ system_locale }}
+    dest: /etc/locale.conf
+    mode: "u=rw,g=r,o=r"
 
 - name: Ensure keyboard layout is selected
   become: true
   copy:
-    dest: /etc/vconsole.conf
     content: |
       KEYMAP={{ system_keymap }}
+    dest: /etc/vconsole.conf
+    mode: "u=rw,g=r,o=r"
 
 - name: Ensure timezone is selected
   become: true
   community.general.timezone:
     name: "{{ system_timezone }}"
+  tags:
+    - molecule-notest
 
 - name: Ensure NTP service is enabled
   become: true
@@ -50,6 +61,8 @@
     name: systemd-timesyncd.service
     enabled: true
     state: started
+  tags:
+    - molecule-notest
 
 - name: Ensure common tools are installed
   become: true

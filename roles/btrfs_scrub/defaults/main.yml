@@ -1,2 +1,2 @@
 ---
-btrfs_scrub_schedule_path: "/"
+btrfs_scrub_path: "/"

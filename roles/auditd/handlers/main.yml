@@ -4,3 +4,4 @@
   shell: |
     augenrules --load
     killall auditd -s SIGHUP
+  when: molecule_yml is not defined

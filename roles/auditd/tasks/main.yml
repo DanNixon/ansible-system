@@ -27,3 +27,5 @@
     name: auditd.service
     state: started
     enabled: true
+  tags:
+    - molecule-notest

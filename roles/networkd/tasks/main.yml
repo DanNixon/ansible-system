@@ -23,3 +23,5 @@
     name: systemd-networkd.service
     state: started
     enabled: true
+  tags:
+    - molecule-notest

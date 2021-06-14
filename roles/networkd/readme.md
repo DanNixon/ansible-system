@@ -1,5 +1,7 @@
 # `dannixon.system.networkd`
 
+[![dannixon.system.networkd](https://github.com/DanNixon/ansible-system/actions/workflows/networkd.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/networkd.yml)
+
 Installs, configures and enables systemd-networkd.
 
 ## Role Variables

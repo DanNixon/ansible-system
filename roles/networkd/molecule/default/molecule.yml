@@ -1,0 +1,20 @@
+---
+driver:
+  name: podman
+
+platforms:
+  - name: ubuntu2004
+    image: docker.io/geerlingguy/docker-ubuntu2004-ansible
+    override_command: false
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+lint: |
+  set -ex
+  ansible-lint
+
+provisioner:
+  name: ansible
+
+verifier:
+  name: testinfra

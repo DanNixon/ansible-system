@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+
+  vars:
+    interactive_user_username: testuser
+    interactive_user_password: "!"
+    interactive_user_ssh_key: ""
+    interactive_user_sudoer: true
+
+  roles:
+    - interactive_user

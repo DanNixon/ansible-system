@@ -24,3 +24,5 @@
     - daily
     - weekly
     - monthly
+  tags:
+    - molecule-notest

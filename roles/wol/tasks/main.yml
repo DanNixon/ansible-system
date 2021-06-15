@@ -11,12 +11,11 @@
   copy:
     src: wol@.service
     dest: /usr/lib/systemd/system/wol@.service
+    mode: "u=rw,g=r,o=r"
+  notify: Reload systemd
 
-- name: Reload systemd services
-  become: true
-  systemd:
-    daemon_reload: true
-  when: systemd_service_install.changed
+- name: Flush handlers
+  meta: flush_handlers
 
 - name: Enable Wake on Lan
   become: true
@@ -24,3 +23,5 @@
     name: "wol@{{ wol_interface }}"
     state: started
     enabled: true
+  tags:
+    - molecule-notest

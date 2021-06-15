@@ -25,3 +25,5 @@
     name: sanoid.timer
     state: started
     enabled: true
+  tags:
+    - molecule-notest

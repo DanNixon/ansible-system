@@ -1,0 +1,15 @@
+---
+- name: Ensure iwd is installed
+  become: true
+  package:
+    name: iwd
+    state: present
+
+- name: Ensure service is enabled and running
+  become: true
+  service:
+    name: iwd
+    enabled: true
+    state: started
+  tags:
+    - molecule-notest

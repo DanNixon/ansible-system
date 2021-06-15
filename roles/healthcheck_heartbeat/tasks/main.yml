@@ -19,3 +19,5 @@
     name: healthcheck-heartbeat.timer
     enabled: true
     state: started
+  tags:
+    - molecule-notest

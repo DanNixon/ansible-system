@@ -1,0 +1,31 @@
+---
+name: "dannixon.system.healthcheck_heartbeat"
+
+on:
+  push:
+    paths:
+      - 'roles/healthcheck_heartbeat/**'
+      - '.github/workflows/healthcheck_heartbeat.yml'
+  pull_request:
+    paths:
+      - 'roles/healthcheck_heartbeat/**'
+      - '.github/workflows/healthcheck_heartbeat.yml'
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+    env:
+      PY_COLORS: 1
+      ANSIBLE_FORCE_COLOR: 1
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - uses: dannixon/ansible-testing/actions/test_role@main
+        with:
+          role: healthcheck_heartbeat

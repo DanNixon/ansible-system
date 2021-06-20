@@ -33,7 +33,7 @@ This provides a means of "resetting" the existing network configuration.
       20-wired:
         network:
           Match:
-            Name: "en*"
+            Type: ether
           Network:
             DHCP: "yes"
 

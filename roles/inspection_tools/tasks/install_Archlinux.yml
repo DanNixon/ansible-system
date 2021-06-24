@@ -1,5 +1,5 @@
 ---
-- name: Ensure pacages are installed
+- name: Ensure packages are installed
   become: true
   package:
     name:

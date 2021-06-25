@@ -11,5 +11,6 @@
       - lm_sensors
       - powertop
       - smartmontools
+      - tcpdump
       - upower
     state: present

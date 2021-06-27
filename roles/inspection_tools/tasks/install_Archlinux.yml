@@ -5,6 +5,7 @@
     name:
       - acpi
       - bmon
+      - dua-cli
       - hddtemp
       - htop
       - iftop

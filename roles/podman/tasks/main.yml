@@ -1,0 +1,5 @@
+---
+- name: Platform specific installation
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - files: "install_{{ ansible_distribution }}.yml"

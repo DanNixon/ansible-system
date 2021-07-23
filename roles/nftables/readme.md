@@ -19,6 +19,19 @@ See example.
       - name: filter
         family: inet
 
+        sets:
+          - name: s1
+            type: ipv4_addr
+            counter: true
+            elements:
+              - 10.0.0.1
+              - 10.0.0.2
+
+          - name: s2
+            typeof: udp dport
+            elements:
+              - domain
+
         chains:
           - "{{ nftables_application_chains.ssh }}"
 

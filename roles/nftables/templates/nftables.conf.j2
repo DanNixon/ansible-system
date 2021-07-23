@@ -1,20 +1,59 @@
+#jinja2: lstrip_blocks: True
 {{ ansible_managed | comment }}
 
 {% for table in nftables_tables %}
 table {{ table.family }} {{ table.name }} {
-{% for chain in table.chains %}
+    {% for set in table.sets | default ([]) %}
+    set {{ set.name }} {
+        {% if set.type is defined %}
+        type {{ set.type }}
+        {% elif set.typeof is defined %}
+        typeof {{ set.typeof }}
+        {% endif %}
+
+        {%- if set.timeout is defined %}
+        timeout {{ set.timeout }}
+        {% endif %}
+
+        {%- if set.gc_interval is defined %}
+        gc-interval {{ set.gc_interval }}
+        {% endif %}
+
+        {%- if set.size is defined %}
+        size {{ set.size }}
+        {% endif %}
+
+        {%- if set.policy is defined %}
+        policy {{ set.policy }}
+        {% endif %}
+
+        {%- if set.counter | default(false) | bool %}
+        counter
+        {% endif %}
+
+        {%- if set.flags is defined and set.flags %}
+        flags {{ set.flags | join(', ') }}
+        {% endif %}
+
+        {%- if set.elements is defined and set.elements %}
+        elements = { {{ set.elements | join(', ') }} }
+        {% endif %}
+    }
+    {% endfor %}
+
+    {% for chain in table.chains %}
     chain {{ chain.name }} {
-{% if chain.config is defined %}
+        {% if chain.config is defined %}
         type {{ chain.config.type }} hook {{ chain.config.hook }} priority {{ chain.config.priority }}
         policy {{ chain.config.policy }}
-{% endif %}
+        {% endif %}
 
-{% for rule in chain.rules | default([]) %}
+        {%- for rule in chain.rules | default([]) %}
         {{ rule }}
-{% endfor %}
+        {% endfor %}
     }
-{% endfor %}
 
+    {% endfor %}
 }
 
 {% endfor %}

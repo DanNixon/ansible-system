@@ -1,6 +1,8 @@
 #jinja2: lstrip_blocks: True
 {{ ansible_managed | comment }}
 
+flush ruleset
+
 {% for table in nftables_tables %}
 table {{ table.family }} {{ table.name }} {
     {% for set in table.sets | default ([]) %}

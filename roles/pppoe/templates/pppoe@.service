@@ -1,0 +1,15 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=PPPoE for %i
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/sbin/pppd call %i
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target

@@ -40,7 +40,7 @@
     dest: /etc/locale.conf
     mode: "u=rw,g=r,o=r"
 
-- name: Ensure keyboard layout is selected
+- name: Ensure console is configured
   become: true
   copy:
     content: |

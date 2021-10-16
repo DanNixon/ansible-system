@@ -12,3 +12,10 @@
     path: /etc/pacman.conf
     insertafter: "^\\[options\\]"
     line: ParallelDownloads = 5
+
+- name: Ensure paru is configured
+  become: true
+  ansible.builtin.template:
+    src: paru.conf
+    dest: /etc/paru.conf
+    mode: "u=rw,g=rw,o=r"

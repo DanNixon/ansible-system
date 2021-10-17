@@ -15,7 +15,11 @@ Performs basic system configuration:
 
 ## Role Variables
 
-See example below, variable names should be pretty self explanatory.
+- `system_hostname`: sets system hostname.
+- `system_locale`: sets system locale.
+- `system_timezone`: sets system timezone.
+- `system_console_keymap`: set the keyboard layout used on the console.
+- `system_console_font` (optional): set the font used on the console.
 
 ## Example Playbook
 
@@ -26,8 +30,9 @@ See example below, variable names should be pretty self explanatory.
   vars:
     system_hostname: test
     system_locale: en_GB.UTF-8
-    system_keymap: uk
     system_timezone: Europe/London
+    system_console_keymap: uk
+    system_console_font: ter-v24b
 
   roles:
     - dannixon.system.system

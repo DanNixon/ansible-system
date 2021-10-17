@@ -1,4 +1,10 @@
 ---
+- name: Ensure console font is installed
+  become: true
+  package:
+    name: terminus-font
+    state: present
+
 - name: Ensure colour output is enabled in pacman
   become: true
   ansible.builtin.lineinfile:

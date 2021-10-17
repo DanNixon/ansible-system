@@ -42,11 +42,11 @@
 
 - name: Ensure console is configured
   become: true
-  copy:
-    content: |
-      KEYMAP={{ system_keymap }}
-    dest: /etc/vconsole.conf
+  ansible.builtin.template:
+    src: vconsole.conf
+    dest: /etc/
     mode: "u=rw,g=r,o=r"
+  notify: Reconfigure vconsole
 
 - name: Ensure timezone is selected
   become: true

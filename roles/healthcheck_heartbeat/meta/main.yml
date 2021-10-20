@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Dan Nixon
+  author: dannixon
   description: Adds a Systemd timer to update a healthchecks.io check
   license: MIT
   min_ansible_version: 2.1

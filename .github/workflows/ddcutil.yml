@@ -26,6 +26,6 @@ jobs:
         with:
           python-version: 3.8
 
-      - uses: dannixon/ansible-testing/actions/test_role@main
+      - uses: dannixon/ansible-testing/actions/test_role@v1
         with:
           role: ddcutil

@@ -2,7 +2,7 @@
 - name: Ensure Snapperoo is installed
   become: true
   become_user: aur_builder
-  ansible.legacy.aur:
+  kewlfft.aur.aur:
     name: snapperoo-git
     state: present
 

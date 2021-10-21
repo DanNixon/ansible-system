@@ -9,4 +9,3 @@ galaxy_info:
 
 dependencies:
   - role: dannixon.system.aur_builder
-  - role: kewlfft.aur

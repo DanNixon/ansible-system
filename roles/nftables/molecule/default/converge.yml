@@ -52,4 +52,4 @@
               policy: accept
 
   roles:
-    - nftables
+    - dannixon.nftables

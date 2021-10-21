@@ -6,4 +6,4 @@
     healthcheck_heartbeat_uuid: "abc123"
 
   roles:
-    - healthcheck_heartbeat
+    - dannixon.healthcheck_heartbeat

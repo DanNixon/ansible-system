@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: dannixon
-  description: Installs and configures Sanoid
+  description: Installs and configures Syncoid
   license: MIT
   min_ansible_version: 2.1
   platforms:

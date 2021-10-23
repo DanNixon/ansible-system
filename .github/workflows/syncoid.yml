@@ -1,0 +1,37 @@
+---
+name: "dannixon.system.syncoid"
+
+on:
+  push:
+    paths:
+      - 'roles/syncoid/**'
+      - '.github/workflows/syncoid.yml'
+  pull_request:
+    paths:
+      - 'roles/syncoid/**'
+      - '.github/workflows/syncoid.yml'
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+    env:
+      PY_COLORS: 1
+      ANSIBLE_FORCE_COLOR: 1
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - uses: dannixon/ansible-testing/actions/test_role@main
+        with:
+          role: syncoid
+          scenario: primary
+
+      - uses: dannixon/ansible-testing/actions/test_role@main
+        with:
+          role: syncoid
+          scenario: replica

@@ -1,0 +1,16 @@
+---
+- name: Ensure backup user has required ZFS permissions
+  become: true
+  community.general.zfs_delegate_admin:
+    name: "{{ item }}"
+    users:
+      - "{{ syncoid_user }}"
+    permissions:
+      - compression
+      - mountpoint
+      - create
+      - mount
+      - receive
+      - rollback
+      - destroy
+  loop: "{{ syncoid_targets }}"

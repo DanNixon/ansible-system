@@ -1,0 +1,18 @@
+---
+driver:
+  name: podman
+
+platforms:
+  - name: ubuntu
+    image: ubuntu
+    pre_build_image: false
+
+lint: |
+  set -ex
+  ansible-lint
+
+provisioner:
+  name: ansible
+
+verifier:
+  name: testinfra

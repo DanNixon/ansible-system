@@ -1,0 +1,22 @@
+---
+- name: Ensure SSH public keys for the backup user exists
+  become: true
+  ansible.posix.authorized_key:
+    user: "{{ syncoid_user }}"
+    key: "{{ item }}"
+    state: present
+  loop: "{{ syncoid_primary_public_keys }}"
+
+- name: Ensure backup user has required ZFS permissions
+  become: true
+  community.general.zfs_delegate_admin:
+    name: "{{ item }}"
+    users:
+      - "{{ syncoid_user }}"
+    permissions:
+      - send
+      - snapshot
+      - hold
+      - destroy
+      - mount
+  loop: "{{ syncoid_targets }}"

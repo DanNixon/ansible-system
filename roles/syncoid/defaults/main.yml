@@ -1,0 +1,10 @@
+---
+syncoid_role: ""
+
+syncoid_group: syncoid-backup
+syncoid_user: syncoid-backup
+
+syncoid_primary_public_keys: []
+syncoid_ssh_key_name: syncoid_backup
+
+syncoid_targets: []

@@ -14,6 +14,7 @@ A collection of system wide configuration and service roles.
 - [![dannixon.system.bluetooth](https://github.com/DanNixon/ansible-system/actions/workflows/bluetooth.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/bluetooth.yml)
 - [![dannixon.system.package_updates](https://github.com/DanNixon/ansible-system/actions/workflows/package_updates.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/package_updates.yml)
 - [![dannixon.system.snapperoo](https://github.com/DanNixon/ansible-system/actions/workflows/snapperoo.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/snapperoo.yml)
+- [![dannixon.system.syncoid](https://github.com/DanNixon/ansible-system/actions/workflows/syncoid.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/syncoid.yml)
 - [![dannixon.system.healthcheck_heartbeat](https://github.com/DanNixon/ansible-system/actions/workflows/healthcheck_heartbeat.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/healthcheck_heartbeat.yml)
 - [![dannixon.system.ddcutil](https://github.com/DanNixon/ansible-system/actions/workflows/ddcutil.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/ddcutil.yml)
 - [![dannixon.system.arch_mirrorlist](https://github.com/DanNixon/ansible-system/actions/workflows/arch_mirrorlist.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/arch_mirrorlist.yml)

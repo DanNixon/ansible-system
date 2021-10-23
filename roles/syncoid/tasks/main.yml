@@ -1,0 +1,37 @@
+---
+- name: Ensure Syncoid is installed
+  become: true
+  package:
+    name: sanoid
+    state: present
+
+- name: Ensure a backup group exists
+  become: true
+  ansible.builtin.group:
+    name: "{{ syncoid_group }}"
+    state: present
+
+- name: Ensure a backup user exists
+  become: true
+  ansible.builtin.user:
+    name: "{{ syncoid_user }}"
+    group: "{{ syncoid_group }}"
+    password: "!"
+    update_password: always
+    generate_ssh_key: "{{ syncoid_role == 'replica' }}"
+    ssh_key_file: ".ssh/{{ syncoid_ssh_key_name }}"
+    ssh_key_type: ed25519
+    state: present
+  register: create_user
+
+- name: Show public SSH key
+  debug:
+    var: create_user.ssh_public_key
+  when: syncoid_role == "replica"
+
+- name: Include role specific tasks
+  include_tasks: "{{ task_file }}"
+  with_first_found:
+    - files: "role_{{ syncoid_role }}.yml"
+  loop_control:
+    loop_var: task_file

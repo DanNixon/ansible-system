@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+
+  vars:
+    syncoid_role: primary
+
+  roles:
+    - dannixon.syncoid

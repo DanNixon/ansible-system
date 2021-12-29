@@ -21,4 +21,3 @@ A collection of system wide configuration and service roles.
 - [![dannixon.system.iwd](https://github.com/DanNixon/ansible-system/actions/workflows/iwd.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/iwd.yml)
 - [![dannixon.system.inspection_tools](https://github.com/DanNixon/ansible-system/actions/workflows/inspection_tools.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/inspection_tools.yml)
 - [![dannixon.system.interactive_user](https://github.com/DanNixon/ansible-system/actions/workflows/interactive_user.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/interactive_user.yml)
-- [![dannixon.system.podman](https://github.com/DanNixon/ansible-system/actions/workflows/podman.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/podman.yml)

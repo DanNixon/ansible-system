@@ -1,6 +1,0 @@
----
-- name: Ensure Podman is installed
-  become: true
-  package:
-    name: podman
-    state: present

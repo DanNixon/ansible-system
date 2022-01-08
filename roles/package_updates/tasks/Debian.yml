@@ -4,3 +4,4 @@
   apt:
     update_cache: true
     upgrade: "yes"
+  register: updates

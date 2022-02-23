@@ -6,4 +6,4 @@
     system_hostname: test
 
   roles:
-    - dannixon.system
+    - dannixon.system.system

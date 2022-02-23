@@ -3,4 +3,4 @@
   hosts: all
 
   roles:
-    - dannixon.snapperoo
+    - dannixon.system.snapperoo

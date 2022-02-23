@@ -3,4 +3,4 @@
   hosts: all
 
   roles:
-    - dannixon.inspection_tools
+    - dannixon.system.inspection_tools

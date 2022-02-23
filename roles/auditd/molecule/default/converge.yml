@@ -10,4 +10,4 @@
       -a always,exit -F arch=b64 -S delete_module -F key=module-unload
 
   roles:
-    - dannixon.auditd
+    - dannixon.system.auditd

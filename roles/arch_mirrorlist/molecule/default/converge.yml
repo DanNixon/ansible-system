@@ -8,4 +8,4 @@
       - DE
 
   roles:
-    - dannixon.arch_mirrorlist
+    - dannixon.system.arch_mirrorlist

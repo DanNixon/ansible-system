@@ -6,4 +6,4 @@
     wol_interface: eth0
 
   roles:
-    - dannixon.wol
+    - dannixon.system.wol

@@ -3,7 +3,7 @@
   hosts: all
 
   vars:
-    healthcheck_heartbeat_uuid: "abc123"
+    healthcheck_heartbeat_uuid: abc123
 
   roles:
-    - dannixon.healthcheck_heartbeat
+    - dannixon.system.healthcheck_heartbeat

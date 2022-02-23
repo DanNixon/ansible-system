@@ -19,4 +19,4 @@
       - password x
 
   roles:
-    - dannixon.pppoe
+    - dannixon.system.pppoe

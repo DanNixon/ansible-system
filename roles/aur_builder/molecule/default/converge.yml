@@ -3,4 +3,4 @@
   hosts: all
 
   roles:
-    - dannixon.aur_builder
+    - dannixon.system.aur_builder

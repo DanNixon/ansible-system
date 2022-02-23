@@ -6,4 +6,4 @@
     syncoid_role: primary
 
   roles:
-    - dannixon.syncoid
+    - dannixon.system.syncoid

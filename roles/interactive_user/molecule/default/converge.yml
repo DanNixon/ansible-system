@@ -9,4 +9,4 @@
     interactive_user_sudoer: true
 
   roles:
-    - dannixon.interactive_user
+    - dannixon.system.interactive_user

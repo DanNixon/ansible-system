@@ -6,4 +6,4 @@
     syncoid_role: replica
 
   roles:
-    - dannixon.syncoid
+    - dannixon.system.syncoid

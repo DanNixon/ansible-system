@@ -77,3 +77,9 @@
   with_first_found:
     - files: "{{ ansible_os_family }}.yml"
       skip: true
+
+- name: Ensure system is rebooted
+  become: true
+  ansible.builtin.reboot:
+    msg: Rebooting post system configuration (via Ansible)
+  when: system_reboot

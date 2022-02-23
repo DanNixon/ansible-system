@@ -20,6 +20,7 @@ Performs basic system configuration:
 - `system_timezone`: sets system timezone.
 - `system_console_keymap`: set the keyboard layout used on the console.
 - `system_console_font` (optional): set the font used on the console.
+- `system_reboot` (optional): if true, unconditionally reboots the system after configuration.
 
 ## Example Playbook
 
@@ -33,6 +34,7 @@ Performs basic system configuration:
     system_timezone: Europe/London
     system_console_keymap: uk
     system_console_font: ter-v24b
+    system_reboot: true
 
   roles:
     - dannixon.system.system

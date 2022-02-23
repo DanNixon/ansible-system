@@ -3,3 +3,4 @@ system_hostname: "{{ inventory_hostname_short }}"
 system_locale: en_GB.UTF-8
 system_timezone: Europe/London
 system_console_keymap: uk
+system_reboot: false

@@ -1,0 +1,59 @@
+---
+name: Role Testing
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  molecule:
+    name: Molecule
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        role:
+          - arch_mirrorlist
+          - auditd
+          - aur_builder
+          - bluetooth
+          - ddcutil
+          - healthcheck_heartbeat
+          - inspection_tools
+          - interactive_user
+          - iwd
+          - manpages
+          - nftables
+          - package_updates
+          - pipewire
+          - pppoe
+          - sanoid
+          - snapperoo
+          - system
+          - wol
+        scenario:
+          - default
+        include:
+          - role: syncoid
+            scenario: primary
+          - role: syncoid
+            scenario: replica
+
+    env:
+      PY_COLORS: 1
+      ANSIBLE_FORCE_COLOR: 1
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - uses: dannixon/ansible-testing/actions/test_role@main
+        with:
+          role: "${{ matrix.role }}"
+          scenario: "${{ matrix.scenario }}"

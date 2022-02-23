@@ -5,6 +5,13 @@
     name: sanoid
     state: present
 
+- name: Ensure SSH client is installed on replicas
+  become: true
+  package:
+    name: openssh-client
+    state: present
+  when: syncoid_role == "replica"
+
 - name: Ensure a backup group exists
   become: true
   ansible.builtin.group:

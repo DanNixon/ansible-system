@@ -1,0 +1,14 @@
+---
+- name: Perform platform specific tasks
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - files: "install_{{ ansible_distribution }}.yml"
+
+- name: "Ensure service is {{ tailscale_service_status }}"
+  become: true
+  ansible.builtin.service:
+    name: tailscaled
+    enabled: true
+    state: "{{ tailscale_service_status }}"
+  tags:
+    - molecule-notest

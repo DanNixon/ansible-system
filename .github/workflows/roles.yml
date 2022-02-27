@@ -33,6 +33,7 @@ jobs:
           - sanoid
           - snapperoo
           - system
+          - tailscale
           - wol
         scenario:
           - default

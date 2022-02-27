@@ -1,0 +1,19 @@
+---
+driver:
+  name: podman
+
+platforms:
+  - name: archlinux
+    image: ghcr.io/dannixon/ansible-molecule-testing:archlinux
+    pre_build_image: true
+
+  - name: ubuntu
+    image: ghcr.io/dannixon/ansible-molecule-testing:ubuntu
+    pre_build_image: true
+
+lint: |
+  set -ex
+  ansible-lint
+
+provisioner:
+  name: ansible

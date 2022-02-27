@@ -1,0 +1,6 @@
+---
+- name: Ensure Tailscale is installed
+  become: true
+  community.general.pacman:
+    name: tailscale
+    state: present

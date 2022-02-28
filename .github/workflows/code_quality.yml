@@ -1,0 +1,22 @@
+---
+name: Code Quality
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ansible_lint:
+    name: Ansible Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Ansible Lint
+        uses: ansible/ansible-lint-action@master
+        with:
+          targets: .
+          override-deps: |
+            rich>=9.5.1,<11.0.0

@@ -7,10 +7,6 @@ platforms:
     image: ghcr.io/dannixon/ansible-molecule-testing:archlinux
     pre_build_image: true
 
-lint: |
-  set -ex
-  ansible-lint
-
 provisioner:
   name: ansible
 

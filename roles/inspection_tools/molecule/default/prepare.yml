@@ -1,0 +1,9 @@
+---
+- name: Prepare
+  hosts: archlinux
+
+  tasks:
+    - name: Ensure Pacman cache is up to date
+      become: true
+      pacman:
+        update_cache: true

@@ -14,9 +14,13 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Ansible Lint
-        uses: ansible/ansible-lint-action@master
+      - name: Set up Python
+        uses: actions/setup-python@v1
         with:
-          targets: .
-          override-deps: |
-            rich>=9.5.1,<11.0.0
+          python-version: 3.8
+
+      - name: Install tools
+        run: pip install ansible ansible-lint
+
+      - name: Ansible Lint
+        run: ansible-lint

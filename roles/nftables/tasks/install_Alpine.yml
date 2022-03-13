@@ -1,0 +1,10 @@
+---
+- name: Set config file location
+  ansible.builtin.set_fact:
+    nftables_config_file: /etc/nftables.nft
+
+- name: Ensure nftables userland tools are installed
+  become: true
+  package:
+    name: nftables
+    state: present

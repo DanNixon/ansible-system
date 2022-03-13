@@ -7,7 +7,7 @@
 - name: "Ensure service is {{ tailscale_service_status }}"
   become: true
   ansible.builtin.service:
-    name: tailscaled
+    name: "{{ tailscale_service_name }}"
     enabled: true
     state: "{{ tailscale_service_status }}"
   tags:

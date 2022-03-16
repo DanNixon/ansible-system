@@ -11,16 +11,4 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.8
-
-      - name: Install tools
-        run: pip install ansible ansible-lint
-
-      - name: Ansible Lint
-        run: ansible-lint -v
+      - uses: dannixon/ansible-testing/actions/lint@main

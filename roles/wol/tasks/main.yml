@@ -1,25 +1,25 @@
 ---
 - name: Ensure ethtool is installed
   become: true
-  package:
+  ansible.builtin.package:
     name: ethtool
     state: present
 
 - name: Ensure systemd service is present
   become: true
   register: systemd_service_install
-  copy:
+  ansible.builtin.copy:
     src: wol@.service
     dest: /usr/lib/systemd/system/wol@.service
     mode: "u=rw,g=r,o=r"
   notify: Reload systemd
 
 - name: Flush handlers
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: Enable Wake on Lan
   become: true
-  service:
+  ansible.builtin.service:
     name: "wol@{{ wol_interface }}"
     state: started
     enabled: true

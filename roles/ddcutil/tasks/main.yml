@@ -1,13 +1,13 @@
 ---
 - name: Ensure ddcutil is installed
   become: true
-  package:
+  ansible.builtin.package:
     name: ddcutil
     state: present
 
 - name: Ensure required kernel modules are loaded
   become: true
-  copy:
+  ansible.builtin.copy:
     src: ddcutil.conf
     dest: /etc/modules-load.d/ddcutil.conf
     mode: "u=r,g=r,o=r"

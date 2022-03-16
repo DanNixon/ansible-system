@@ -1,27 +1,27 @@
 ---
 - name: Ensure Sanoid is installed
   become: true
-  package:
+  ansible.builtin.package:
     name: sanoid
     state: present
 
 - name: Ensure configuration directory exists
   become: true
-  file:
+  ansible.builtin.file:
     path: /etc/sanoid/
     state: directory
     mode: "u=rwx,g=rx,o=rx"
 
 - name: Ensure configuration is present
   become: true
-  template:
+  ansible.builtin.template:
     src: sanoid.conf.j2
     dest: "/etc/sanoid/sanoid.conf"
     mode: "u=r,g=r,o=r"
 
 - name: Ensure timer is enabled
   become: true
-  service:
+  ansible.builtin.service:
     name: sanoid.timer
     state: started
     enabled: true

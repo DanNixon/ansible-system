@@ -1,6 +1,6 @@
 ---
 - name: Perform platform specific tasks
-  include_tasks: "{{ item }}"
+  ansible.builtin.include_tasks: "{{ item }}"
   with_first_found:
     - files: "install_{{ ansible_distribution }}.yml"
 

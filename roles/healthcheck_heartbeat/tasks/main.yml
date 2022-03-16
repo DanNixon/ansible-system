@@ -1,7 +1,7 @@
 ---
 - name: Ensure systemd units are present
   become: true
-  template:
+  ansible.builtin.template:
     src: "{{ item }}.j2"
     dest: "/usr/lib/systemd/system/{{ item }}"
     mode: "u=r,g=r,o=r"
@@ -11,11 +11,11 @@
   notify: Reload systemd
 
 - name: Flush handlers
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: Enable timer
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: healthcheck-heartbeat.timer
     enabled: true
     state: started

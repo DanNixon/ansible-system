@@ -1,11 +1,11 @@
 ---
 - name: Clean existing configuration
-  import_tasks: clean.yml
+  ansible.builtin.import_tasks: clean.yml
   when: networkd_clean
 
 - name: Ensure configuration is present and up to date
   become: true
-  template:
+  ansible.builtin.template:
     src: config.j2
     dest: "/usr/lib/systemd/network/{{ item.filename }}"
     owner: root
@@ -19,7 +19,7 @@
 
 - name: Ensure service is enabled and running
   become: true
-  service:
+  ansible.builtin.service:
     name: systemd-networkd.service
     state: started
     enabled: true

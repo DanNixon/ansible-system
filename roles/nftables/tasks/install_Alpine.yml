@@ -7,6 +7,6 @@
 
 - name: Ensure nftables userland tools are installed
   become: true
-  package:
+  ansible.builtin.package:
     name: nftables
     state: present

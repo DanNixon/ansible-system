@@ -1,7 +1,7 @@
 ---
 - name: Ensure manpage dependencies are installed
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - man-db
       - man-pages

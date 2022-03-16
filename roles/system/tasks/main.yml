@@ -1,11 +1,11 @@
 ---
 - name: Non-FQDN hostname
-  debug:
+  ansible.builtin.debug:
     var: system_hostname
 
 - name: Ensure hostname is set
   become: true
-  copy:
+  ansible.builtin.copy:
     content: |
       {{ system_hostname }}
     dest: /etc/hostname
@@ -15,7 +15,7 @@
 
 - name: Ensure local host entries are present
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/hosts
     line: "{{ item }}"
   loop:
@@ -34,7 +34,7 @@
 
 - name: Ensure locale is selected
   become: true
-  copy:
+  ansible.builtin.copy:
     content: |
       LANG={{ system_locale }}
     dest: /etc/locale.conf
@@ -57,7 +57,7 @@
 
 - name: Ensure NTP service is enabled
   become: true
-  service:
+  ansible.builtin.service:
     name: systemd-timesyncd.service
     enabled: true
     state: started
@@ -66,14 +66,14 @@
 
 - name: Ensure common tools are installed
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - sudo
       - iproute2
     state: present
 
 - name: Perform platform specific tasks
-  include_tasks: "{{ item }}"
+  ansible.builtin.include_tasks: "{{ item }}"
   with_first_found:
     - files: "{{ ansible_os_family }}.yml"
       skip: true

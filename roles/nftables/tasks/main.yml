@@ -1,12 +1,12 @@
 ---
 - name: Ensure nftables is installed
-  include_tasks: "{{ lookup('first_found', 'install_%s.yml' % ansible_distribution) }}"
+  ansible.builtin.include_tasks: "{{ lookup('first_found', 'install_%s.yml' % ansible_distribution) }}"
   tags:
     - firewall_rules
 
 - name: Ensure configuration is present
   become: true
-  template:
+  ansible.builtin.template:
     src: nftables.conf.j2
     dest: "{{ nftables_config_file }}"
     mode: "u=r,g=r,o=r"
@@ -19,7 +19,7 @@
 # check for updates to an existing file.
 - name: Check nftables configuration
   become: true
-  command: "nft -c -f {{ nftables_config_file }}"
+  ansible.builtin.command: "nft -c -f {{ nftables_config_file }}"
   changed_when: false
   tags:
     - firewall_rules
@@ -27,7 +27,7 @@
 
 - name: Ensure service is enabled and running
   become: true
-  service:
+  ansible.builtin.service:
     name: nftables
     enabled: true
     state: started

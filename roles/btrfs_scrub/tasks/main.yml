@@ -1,7 +1,7 @@
 ---
 - name: Escape path
   become: true
-  command: "systemd-escape {{ btrfs_scrub_path }}"
+  ansible.builtin.command: "systemd-escape {{ btrfs_scrub_path }}"
   changed_when: false
   register: escaped_path
 

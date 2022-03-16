@@ -1,7 +1,7 @@
 ---
 - name: Ensure the user exists
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ interactive_user_username }}"
     state: present
 
@@ -15,7 +15,7 @@
 
 - name: Ensure user can sudo if allowed
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     line: "{{ interactive_user_username }} ALL=(ALL) ALL"
     path: "/etc/sudoers.d/{{ interactive_user_username }}"
     mode: "u=r,g=r,o="
@@ -25,7 +25,7 @@
 
 - name: Ensure the user's password is set
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ interactive_user_username }}"
     password: "{{ interactive_user_password }}"
     state: present

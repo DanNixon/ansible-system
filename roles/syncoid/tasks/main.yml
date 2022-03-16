@@ -1,13 +1,13 @@
 ---
 - name: Ensure Syncoid is installed
   become: true
-  package:
+  ansible.builtin.package:
     name: sanoid
     state: present
 
 - name: Ensure SSH client is installed on replicas
   become: true
-  package:
+  ansible.builtin.package:
     name: openssh-client
     state: present
   when: syncoid_role == "replica"
@@ -32,12 +32,12 @@
   register: create_user
 
 - name: Show public SSH key
-  debug:
+  ansible.builtin.debug:
     var: create_user.ssh_public_key
   when: syncoid_role == "replica"
 
 - name: Include role specific tasks
-  include_tasks: "{{ task_file }}"
+  ansible.builtin.include_tasks: "{{ task_file }}"
   with_first_found:
     - files: "role_{{ syncoid_role }}.yml"
   loop_control:

@@ -1,7 +1,7 @@
 ---
 - name: Ensure iptables userland tools are not installed
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - iptables
       - ufw
@@ -9,6 +9,6 @@
 
 - name: Ensure nftables userland tools are installed
   become: true
-  package:
+  ansible.builtin.package:
     name: nftables
     state: present

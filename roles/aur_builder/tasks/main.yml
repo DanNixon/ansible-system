@@ -1,13 +1,13 @@
 ---
 - name: Ensure requirements for building packages are satisfied
   become: true
-  package:
+  ansible.builtin.package:
     name: base-devel
     state: present
 
 - name: Ensure a user exists to build packages
   become: true
-  user:
+  ansible.builtin.user:
     name: aur_builder
     password: "!"
     create_home: false
@@ -16,7 +16,7 @@
 
 - name: Ensure the AUR builder user can use sudo without a password
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     path: /etc/sudoers.d/aur_builder
     mode: "u=r,g=r,o="

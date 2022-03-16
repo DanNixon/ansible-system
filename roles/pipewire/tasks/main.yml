@@ -1,7 +1,7 @@
 ---
 - name: Ensure Pipewire and dependencies are installed
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - pipewire
       - pipewire-jack
@@ -10,14 +10,14 @@
 
 - name: Ensure PipeWire is loaded as JACK library
   become: true
-  copy:
+  ansible.builtin.copy:
     src: pipewire-jack.conf
     dest: /etc/ld.so.conf.d/pipewire-jack.conf
     mode: "u=rw,g=r,o=r"
 
 - name: Ensure helper scripts are present
   become: true
-  copy:
+  ansible.builtin.copy:
     src: pw-view-graph
     dest: /usr/bin/pw-view-graph
     mode: "u=rx,g=rx,o=rx"

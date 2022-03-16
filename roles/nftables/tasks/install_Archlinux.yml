@@ -1,7 +1,7 @@
 ---
 - name: Ensure nftables userland tools are installed
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - nftables
       - iptables-nft
@@ -9,7 +9,7 @@
 
 - name: Ensure iptables services are disabled and stopped
   become: true
-  service:
+  ansible.builtin.service:
     name: "{{ item }}"
     enabled: false
     state: stopped

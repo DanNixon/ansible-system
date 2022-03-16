@@ -1,7 +1,7 @@
 ---
 - name: Restart nftables
   become: true
-  service:
+  ansible.builtin.service:
     name: nftables
     state: restarted
   when: molecule_yml is not defined

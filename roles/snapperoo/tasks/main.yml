@@ -8,14 +8,14 @@
 
 - name: Ensure Snapperoo configuration is present
   become: true
-  template:
+  ansible.builtin.template:
     src: snapperoo.json.j2
     dest: /etc/snapperoo.json
     mode: "u=r,g=r,o=r"
 
 - name: Enable Snapperoo timers
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: "snapperoo@{{ item }}.timer"
     enabled: true
     state: started

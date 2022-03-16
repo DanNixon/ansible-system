@@ -1,13 +1,13 @@
 ---
 - name: Find existing configuration files
-  find:
+  ansible.builtin.find:
     paths: /usr/lib/systemd/network/
     patterns: "{{ networkd_clean_pattern }}"
   register: config_files
 
 - name: Remove existing configuration files
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ item.path }}"
     state: absent
   loop: "{{ config_files.files }}"

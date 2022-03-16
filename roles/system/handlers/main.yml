@@ -1,7 +1,7 @@
 ---
 - name: Reconfigure vconsole
   become: true
-  service:
+  ansible.builtin.service:
     name: systemd-vconsole-setup.service
     state: restarted
   when: molecule_yml is not defined and ansible_os_family == 'Archlinux'

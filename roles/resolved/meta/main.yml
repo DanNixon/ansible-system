@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: dannixon
+  description: Configures and enables systemd-resolved
+  license: MIT
+  min_ansible_version: 2.1
+  platforms:
+    - name: ArchLinux
+    - name: Ubuntu
+
+dependencies: []

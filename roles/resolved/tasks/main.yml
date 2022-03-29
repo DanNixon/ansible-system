@@ -1,0 +1,15 @@
+---
+- name: Ensure resolve.conf points to resolved managed stub
+  become: true
+  ansible.builtin.file:
+    src: /run/systemd/resolve/stub-resolv.conf
+    dest: /etc/resolv.conf
+    force: true
+    state: link
+
+- name: Ensure service is enabled and running
+  become: true
+  ansible.builtin.service:
+    name: systemd-resolved.service
+    state: started
+    enabled: true

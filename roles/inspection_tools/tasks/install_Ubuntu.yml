@@ -13,4 +13,5 @@
       - smartmontools
       - tcpdump
       - upower
+      - wireguard-tools
     state: present

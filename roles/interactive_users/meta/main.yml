@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: dannixon
-  description: Adds a user for a real person
+  description: Adds users for real people
   license: MIT
   min_ansible_version: 2.1
   platforms:

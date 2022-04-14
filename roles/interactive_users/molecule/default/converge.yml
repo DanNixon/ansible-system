@@ -1,0 +1,13 @@
+---
+- name: Converge
+  hosts: all
+
+  vars:
+    interactive_users:
+      - username: testuser
+        password: "!"
+        ssh_pubkey: ""
+        sudoer: true
+
+  roles:
+    - dannixon.system.interactive_users

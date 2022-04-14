@@ -23,7 +23,7 @@ jobs:
           - ddcutil
           - healthcheck_heartbeat
           - inspection_tools
-          - interactive_user
+          - interactive_users
           - iwd
           - manpages
           - nftables

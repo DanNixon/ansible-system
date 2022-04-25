@@ -1,0 +1,8 @@
+---
+- name: Ensure no swap is configured
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/fstab
+    regexp: '^.*swap\s*sw'
+    state: absent
+  notify: Reboot

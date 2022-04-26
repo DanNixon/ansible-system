@@ -1,7 +1,5 @@
 # `dannixon.system.interactive_users`
 
-[![dannixon.system.interactive_users](https://github.com/DanNixon/ansible-system/actions/workflows/interactive_users.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/interactive_users.yml)
-
 Creates new users intended to login to a system.
 
 ## Role Variables

@@ -1,7 +1,5 @@
 # `dannixon.system.nftables`
 
-[![dannixon.system.nftables](https://github.com/DanNixon/ansible-system/actions/workflows/nftables.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/nftables.yml)
-
 Installs, configures and enables a firewall using [nftables](https://www.nftables.org/).
 
 ## Role Variables

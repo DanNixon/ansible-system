@@ -1,7 +1,5 @@
 # `dannixon.system.system`
 
-[![dannixon.system.system](https://github.com/DanNixon/ansible-system/actions/workflows/system.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/system.yml)
-
 Performs basic system configuration:
 
   - Sets hostname

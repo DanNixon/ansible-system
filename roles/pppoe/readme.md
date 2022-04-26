@@ -1,7 +1,5 @@
 # `dannixon.system.pppoe`
 
-[![dannixon.system.pppoe](https://github.com/DanNixon/ansible-system/actions/workflows/pppoe.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/pppoe.yml)
-
 Installs and configures a PPPoE client.
 
 ## Role Variables

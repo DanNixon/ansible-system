@@ -1,7 +1,5 @@
 # `dannixon.system.healthcheck_heartbeat`
 
-[![dannixon.system.healthcheck_heartbeat](https://github.com/DanNixon/ansible-system/actions/workflows/healthcheck_heartbeat.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/healthcheck_heartbeat.yml)
-
 Configures periodic pinging of a [Healthchecks](https://healthchecks.io) check, providing a basic system heartbeat.
 
 ## Role Variables

@@ -1,7 +1,5 @@
 # `dannixon.system.sanoid`
 
-[![dannixon.system.sanoid](https://github.com/DanNixon/ansible-system/actions/workflows/sanoid.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/sanoid.yml)
-
 Installs, configures and enables [Sanoid](https://github.com/jimsalterjrs/sanoid).
 
 ## Role Variables

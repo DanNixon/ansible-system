@@ -1,7 +1,5 @@
 # `dannixon.system.auditd`
 
-[![dannixon.system.auditd](https://github.com/DanNixon/ansible-system/actions/workflows/auditd.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/auditd.yml)
-
 Installs and configures auditd.
 
 ## Role Variables

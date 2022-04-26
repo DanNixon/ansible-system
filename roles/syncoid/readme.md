@@ -1,7 +1,5 @@
 # `dannixon.system.syncoid`
 
-[![dannixon.system.syncoid](https://github.com/DanNixon/ansible-system/actions/workflows/syncoid.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/syncoid.yml)
-
 Installs and configures [Syncoid](https://github.com/jimsalterjrs/sanoid/#syncoid).
 Creates users, configures SSH keys and ZFS permission delegation on both primary and replica sides for a typical primary/(multiple) replica backup strategy, with the replicas having SSH access to the primary.
 

@@ -1,7 +1,5 @@
 # `dannixon.system.arch_mirrorlist`
 
-[![dannixon.system.arch_mirrorlist](https://github.com/DanNixon/ansible-system/actions/workflows/arch_mirrorlist.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/arch_mirrorlist.yml)
-
 Installs an up to date Pacman mirror list from the [mirrorlist generator](https://archlinux.org/mirrorlist/).
 
 ## Role Variables

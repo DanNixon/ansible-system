@@ -1,7 +1,5 @@
 # `dannixon.system.snapperoo`
 
-[![dannixon.system.snapperoo](https://github.com/DanNixon/ansible-system/actions/workflows/snapperoo.yml/badge.svg?branch=main)](https://github.com/DanNixon/ansible-system/actions/workflows/snapperoo.yml)
-
 Installs, configures and enables [Snapperoo](https://github.com/DanNixon/snapperoo).
 
 ## Role Variables

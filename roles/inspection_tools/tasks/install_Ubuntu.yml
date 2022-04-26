@@ -5,7 +5,6 @@
     name:
       - acpi
       - bmon
-      - hddtemp
       - htop
       - iftop
       - lm-sensors

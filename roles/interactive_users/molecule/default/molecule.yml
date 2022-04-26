@@ -7,8 +7,12 @@ platforms:
     image: ghcr.io/dannixon/ansible-molecule-testing:archlinux
     pre_build_image: true
 
-  - name: ubuntu
-    image: ghcr.io/dannixon/ansible-molecule-testing:ubuntu
+  - name: ubuntufocal
+    image: ghcr.io/dannixon/ansible-molecule-testing:ubuntufocal
+    pre_build_image: true
+
+  - name: ubuntujammy
+    image: ghcr.io/dannixon/ansible-molecule-testing:ubuntujammy
     pre_build_image: true
 
 provisioner:

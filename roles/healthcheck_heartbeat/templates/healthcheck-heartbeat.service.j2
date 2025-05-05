@@ -1,6 +1,0 @@
-[Unit]
-Description=Ping a healthchecks.io check
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/curl -m 10 --retry 5 {{ healthcheck_heartbeat_url }}/{{ healthcheck_heartbeat_uuid }}

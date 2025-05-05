@@ -16,25 +16,11 @@ jobs:
       fail-fast: false
       matrix:
         role:
-          - arch_mirrorlist
-          - auditd
-          - aur_builder
-          - bluetooth
-          - ddcutil
-          - healthcheck_heartbeat
-          - inspection_tools
           - interactive_users
-          - iwd
-          - manpages
           - nftables
           - package_updates
-          - pipewire
-          - pppoe
           - sanoid
-          - snapperoo
           - system
-          - tailscale
-          - wol
         scenario:
           - default
         include:

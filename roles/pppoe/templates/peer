@@ -1,4 +1,0 @@
-plugin rp-pppoe.so
-{% for c in pppoe_peer_config %}
-{{ c }}
-{% endfor %}

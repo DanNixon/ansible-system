@@ -1,8 +1,0 @@
----
-arch_mirrorlist_url_parts:
-  - "{% for country in arch_mirrorlist_countries %}&country={{ country }}{% endfor %}"
-  - "{% for proto in arch_mirrorlist_protocols %}&protocol={{ proto }}{% endfor %}"
-  - "{% for ipver in arch_mirrorlist_ip_versions %}&ip_version={{ ipver }}{% endfor %}"
-  - "{% if arch_mirrorlist_use_status %}&use_mirror_status=on{% endif %}"
-
-arch_mirrorlist_url: "https://archlinux.org/mirrorlist/?{{ arch_mirrorlist_url_parts | join }}"

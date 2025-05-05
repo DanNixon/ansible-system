@@ -1,5 +1,0 @@
----
-- name: Reboot
-  become: true
-  ansible.builtin.reboot:
-  when: disable_swap_reboot

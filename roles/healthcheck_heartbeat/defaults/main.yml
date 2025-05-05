@@ -1,5 +1,0 @@
----
-healthcheck_heartbeat_url: https://hc-ping.com
-healthcheck_heartbeat_uuid: ""
-
-healthcheck_heartbeat_time_period: "*:0/5"

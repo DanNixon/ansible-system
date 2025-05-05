@@ -1,6 +1,0 @@
----
-- name: Ensure Tailscale is installed
-  become: true
-  ansible.builtin.package:
-    name: tailscale
-    state: present

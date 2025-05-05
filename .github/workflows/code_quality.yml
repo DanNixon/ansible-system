@@ -3,7 +3,11 @@ name: Code Quality
 
 on:
   push:
+    branches:
+      - main
   pull_request:
+    branches:
+      - main
 
 jobs:
   ansible_lint:
@@ -11,4 +15,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: dannixon/ansible-testing/actions/lint@main
+      - uses: actions/checkout@v4
+      - uses: ansible/ansible-lint@main
